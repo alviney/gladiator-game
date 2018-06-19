@@ -31,4 +31,13 @@ public class ShopPeople : MonoBehaviour {
 
 		gladiators.Add(gladiator);
 	}
+
+	public GameObject GetGladiatorFromShop(int index) {
+		return gladiators[index];
+	}
+
+	public void RemoveGladiator(int index) {
+
+		gladiators.RemoveAt(index);
+	}
 }

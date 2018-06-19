@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class OwnedManager : MonoBehaviour {
 
+	private OwnedPeople ownedPeople;
+
 #region Singleton
 
 	public static OwnedManager instance;
@@ -17,4 +19,11 @@ public class OwnedManager : MonoBehaviour {
 	}
 
 #endregion
+
+	void Start() {
+		ownedPeople = this.transform.GetComponent<OwnedPeople>();
+	}
+	public void AddGladiator(GameObject gladiator) {
+		ownedPeople.AddGladiator(gladiator);
+	}
 }

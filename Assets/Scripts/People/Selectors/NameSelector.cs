@@ -29,9 +29,7 @@ public class NameSelector : MonoBehaviour {
 
 	public string GetName() {
 
-		print("1");
 		if (unusedNames.Count == 0) {
-			print("2");
 			ResetLists();
 		}
 

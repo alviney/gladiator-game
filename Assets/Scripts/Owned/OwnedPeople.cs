@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class OwnedPeople : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public List<GameObject> gladiators;
+
+	public void AddGladiator(GameObject gladiator) {
+
+		gladiator.transform.SetParent(this.transform);
+
+		gladiators.Add(gladiator);
 	}
 }
