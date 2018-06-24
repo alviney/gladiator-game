@@ -50,11 +50,15 @@ public class ShopUI : MonoBehaviour {
 		SetGladiator(gladiatorIndex);
 	}
 
+	public void RefreshGladiator() {
+		SetGladiator(gladiatorIndex);
+	}
+
 	public void BuyGladiator() {
 
 		ShopManager.instance.BuyGladiator(gladiatorIndex);
 
-		NextGladiator();
+		RefreshGladiator();
 	}
 }
 

@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBank : MonoBehaviour {
-
-	public int gold = 200;
-
+public class PlayerManager : MonoBehaviour {
+	
 #region Singleton
 
-	public static PlayerBank instance;
+	public static PlayerManager instance;
 
 	void Awake() {	
 		if (instance != null) {
@@ -17,8 +15,9 @@ public class PlayerBank : MonoBehaviour {
 
 		instance = this;
 	}
-
 #endregion
+
+	public int gold = 200;
 	
 	public int GetGold() {
 		return gold;
@@ -27,6 +26,5 @@ public class PlayerBank : MonoBehaviour {
 	public void SetGold(int incoming) {
 		gold += incoming;
 	}
+	
 }
-
-

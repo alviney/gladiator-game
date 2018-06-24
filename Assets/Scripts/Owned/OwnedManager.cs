@@ -23,6 +23,10 @@ public class OwnedManager : MonoBehaviour {
 	void Start() {
 		ownedPeople = this.transform.GetComponent<OwnedPeople>();
 	}
+
+	public List<GameObject> GetGladiators() {
+		return ownedPeople.gladiators;
+	}
 	public void AddGladiator(GameObject gladiator) {
 		ownedPeople.AddGladiator(gladiator);
 	}

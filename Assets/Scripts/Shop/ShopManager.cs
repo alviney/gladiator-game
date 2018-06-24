@@ -28,12 +28,13 @@ public class ShopManager : MonoBehaviour {
 	}
 
 	public void BuyGladiator(int index) {
+		print(index);
 
 		GameObject gladiator = shopPeople.GetGladiatorFromShop(index);
 
 		OwnedManager.instance.AddGladiator(gladiator);
 
-		PlayerBank.instance.SetGold(-20);
+		PlayerManager.instance.SetGold(-20);
 
 		shopPeople.RemoveGladiator(index);
 	}
