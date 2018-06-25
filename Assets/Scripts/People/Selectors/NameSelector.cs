@@ -8,18 +8,6 @@ public class NameSelector : MonoBehaviour {
 
 	public List<string> usedNames;
 
-	#region Singleton
-	public static NameSelector instance; 
-
-	private void Awake() {
-		if (instance != null) {
-			return;
-		}
-
-		instance = this;
-	}
-	#endregion 
-
 	private void Start() {
 		// if load
 			// create lists of 

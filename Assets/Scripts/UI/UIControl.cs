@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour {
+public class UIControl : MonoBehaviour {
 
 	public void ShowPanel(GameObject panelToShow) {
 		panelToShow.SetActive(true);

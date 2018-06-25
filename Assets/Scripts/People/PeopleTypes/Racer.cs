@@ -7,7 +7,7 @@ public class Racer : Person {
 	public int racesRun;
 	public int racesWon;
 
-	public void Setup() {
+	public Racer(string name) : base (name) {
 		racesWon = 0;
 		racesRun = 0;
 	}

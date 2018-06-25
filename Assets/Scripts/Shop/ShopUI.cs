@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class ShopUI : MonoBehaviour {
 	
+	public Shop shop;
 	new public Text name;
 	public Text background; 
-	public List<GameObject> gladiators;
+	public List<Gladiator> gladiators;
 
 	private int gladiatorIndex = 0;
 
 	public void GetGladiators() {
 
-		gladiators = ShopManager.instance.GetGladiators();
+		gladiators = shop.GetGladiators();
 
 		SetGladiator(gladiatorIndex);
 
@@ -22,7 +22,7 @@ public class ShopUI : MonoBehaviour {
 
 	public void SetGladiator(int index) {
 
-		Gladiator glad = gladiators[index].GetComponent<Gladiator>();
+		Gladiator glad = gladiators[index];
 
 		name.text = glad.name;
 
@@ -56,7 +56,7 @@ public class ShopUI : MonoBehaviour {
 
 	public void BuyGladiator() {
 
-		ShopManager.instance.BuyGladiator(gladiatorIndex);
+		shop.BuyGladiator(gladiators[gladiatorIndex]);
 
 		RefreshGladiator();
 	}

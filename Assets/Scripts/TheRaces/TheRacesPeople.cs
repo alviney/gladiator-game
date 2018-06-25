@@ -25,11 +25,11 @@ public class TheRacesPeople : MonoBehaviour {
 
 	private void AddRacer() {
 		
-		GameObject racer = PeopleFactory.instance.CreateRacer();
+		// GameObject racer = PeopleFactory.instance.CreateRacer();
 
-		racer.transform.SetParent(this.transform);
+		// racer.transform.SetParent(this.transform);
 
-		racers.Add(racer);
+		// racers.Add(racer);
 	}
 
 	private GameObject ChooseRandomRacer() {

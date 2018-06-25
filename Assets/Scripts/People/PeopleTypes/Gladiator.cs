@@ -9,7 +9,7 @@ public class Gladiator: Person {
 	public int weaponModifier;
 	
 
-	public void Setup(Background background) {
+	public Gladiator(Background background, string name) : base(name) {
 		this.background = background;
 	}
 	

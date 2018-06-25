@@ -1,49 +1,38 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PeopleFactory : MonoBehaviour {
+	public static PeopleManager instance;
+	private BackgroundSelector bs;
+	private NameSelector ns;
+	private ModelSelector ms;
 
-	public GameObject gladiatorPrefab;
+	void Awake() {	
+		bs = this.GetComponent<BackgroundSelector>();
+		ns = this.GetComponent<NameSelector>();
+		ms = this.GetComponent<ModelSelector>();
+	}
 
-	public GameObject racerPrefab;
+	public Gladiator CreateGladiator() {
 
-	#region Singleton
+		Background background = bs.GetNewBackground();
 
-		public static PeopleFactory instance;
+		string name = ns.GetName();
 
-		void Awake() {	
-			if (instance != null) {
-				return;
-			}
+		Gladiator newGladiator = new Gladiator(background, name);
 
-			instance = this;
-		}
-
-	#endregion
-
-	public GameObject CreateGladiator() {
-
-		GameObject tempObj = Instantiate(gladiatorPrefab, this.transform);
-		
-		Gladiator gladiator = tempObj.GetComponent<Gladiator>();
-
-		Background background = BackgroundSelector.instance.GetNewBackground();
-
-		gladiator.Setup(background);
-
-		return tempObj;
+		return newGladiator;
 
 	}
 
-	public GameObject CreateRacer() {
+	// public void CreateRacer(Location location) {
 
-		GameObject tempObj = Instantiate(racerPrefab, this.transform);
-		
-		Racer racer = tempObj.GetComponent<Racer>();
+	// 	string name = ns.GetName();
 
-		racer.Setup();
+	// 	Racer newRacer = new Racer(name, location);
 
-		return tempObj;
-	}
+	// 	return newRacer;
+	// }
 }

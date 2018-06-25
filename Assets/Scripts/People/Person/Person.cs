@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Person : MonoBehaviour {
+public class Person {
 
-	new public string name;
+	public string name;
+
+	public Location location;
 
 	public Model model;
 
 	// Setup Model
-	private void Start() {
-		name = NameSelector.instance.GetName();
+	public Person(string name) {
+		this.name = name;
 	}
-
 }
 
