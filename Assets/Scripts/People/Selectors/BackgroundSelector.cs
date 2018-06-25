@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundSelector : MonoBehaviour {
+public class BackgroundSelector : Selector {
 
-	public Background[] backgroundCollection;
+	public List<Background> unusedStories;
+
+	public List<Background> usedStories;
+	public Backgrounds allStories;
+
+	void Start() {
+		unusedStories = allStories.GetAllStories();
+	}
 
 	public Background GetNewBackground() {
-		Background background = backgroundCollection[0];
-		return background;
+		return base.GetItem(unusedStories, usedStories);
 	}
 }

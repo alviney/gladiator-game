@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037a6b4a903ef8149b38a3243b127d57, type: 3}
+  m_Name: Backgrounds
+  m_EditorClassIdentifier: 
+  Stories:
+  - story: Stole a loaf of bread
+    gender: Male
+    age: 25
+  - story: Murder
+    gender: Male
+    age: 34
+  - story: Unknown
+    gender: Male
+    age: 31
+  - story: Deserter
+    gender: Male
+    age: 26
+  - story: Homeless
+    gender: Male
+    age: 18

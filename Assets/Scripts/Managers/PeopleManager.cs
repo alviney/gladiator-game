@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 public enum Location { Shop, Tournament, Player}
+
 public class PeopleManager : MonoBehaviour {
 	public static PeopleManager instance;
 	public PeopleFactory peopleFactory;
 
+	private DataController dataController;
 	private List<Gladiator> shopGladiators = new List<Gladiator>();
 	private List<Gladiator> tournamentGladiators = new List<Gladiator>();
 	private List<Gladiator> playerGladiators = new List<Gladiator>();
@@ -21,12 +23,33 @@ public class PeopleManager : MonoBehaviour {
 	}
 	#endregion
 
+	void Start() {
+
+		dataController = (DataController)FindObjectOfType(typeof(DataController));  
+
+		if (!dataController.newGame) {
+			shopGladiators = dataController.gameData.shopGladiators;
+
+			tournamentGladiators = dataController.gameData.tournamentGladiators;
+
+			playerGladiators = dataController.gameData.playerGladiators;
+		} else {
+
+			NewGame();
+		}
+
+	}
 	public void CreateGladiator(Location location) {
 
 		Gladiator gladiator = peopleFactory.CreateGladiator();
 
 		AddGladiator(gladiator, location);
 	}
+
+	// public void PrintJson() {
+	// 	ListContainer container = new ListContainer(shopGladiators);
+	// 	print(JsonUtility.ToJson(container));
+	// }
 
 	// public void CreateRacer(Location location) {
 
@@ -64,5 +87,14 @@ public class PeopleManager : MonoBehaviour {
 				return playerGladiators;
 		}
 		return null;
+	}
+
+	private void NewGame() {
+		
+		for (int i = 0; i < Settings.newGame.numOfGladsInShop; i++)
+		{
+			CreateGladiator(Location.Shop);
+		}
+		 
 	}
 }
