@@ -13,7 +13,7 @@ public class DataController : MonoBehaviour {
 	private string gameDataProjectFilePath = "/StreamingAssets/data.json";
 
 	
-	void Start() {
+	void Awake() {
 		LoadGameData();
 	}
 
@@ -21,18 +21,14 @@ public class DataController : MonoBehaviour {
 		string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
 
 		if (File.Exists (filePath)) {
-
 			string dataAsJson = File.ReadAllText(filePath);
 
 			gameData = JsonUtility.FromJson<GameData>(dataAsJson);
 
-		} else {
-			newGame = true;
-			gameData = new GameData();
-		}
+		} 
 	}
 
-	 public void SaveGameData()
+	public void SaveGameData()
     {
 		// Things to save
 		gameData.shopGladiators = PeopleManager.instance.GetGladiators(Location.Shop);
@@ -46,4 +42,9 @@ public class DataController : MonoBehaviour {
         File.WriteAllText (filePath, dataAsJson);
 
     }
+
+	public void NewGame() {
+		newGame = true;
+		gameData = new GameData();
+	}
 }

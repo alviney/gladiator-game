@@ -8,9 +8,10 @@ public class PeopleManager : MonoBehaviour {
 	public PeopleFactory peopleFactory;
 
 	private DataController dataController;
-	private List<Gladiator> shopGladiators = new List<Gladiator>();
+	public List<Gladiator> shopGladiators = new List<Gladiator>();
 	private List<Gladiator> tournamentGladiators = new List<Gladiator>();
 	private List<Gladiator> playerGladiators = new List<Gladiator>();
+	private enum Setup { New, Load }
 
 	#region Singleton
 	void Awake() {	
@@ -28,14 +29,11 @@ public class PeopleManager : MonoBehaviour {
 		dataController = (DataController)FindObjectOfType(typeof(DataController));  
 
 		if (!dataController.newGame) {
-			shopGladiators = dataController.gameData.shopGladiators;
+			Init("Load");
 
-			tournamentGladiators = dataController.gameData.tournamentGladiators;
-
-			playerGladiators = dataController.gameData.playerGladiators;
 		} else {
 
-			NewGame();
+			Init("New");
 		}
 
 	}
@@ -89,12 +87,21 @@ public class PeopleManager : MonoBehaviour {
 		return null;
 	}
 
-	private void NewGame() {
-		
-		for (int i = 0; i < Settings.newGame.numOfGladsInShop; i++)
-		{
-			CreateGladiator(Location.Shop);
-		}
-		 
+	private void Init(string setup) {
+
+		if (setup == "New") {
+			for (int i = 0; i < Settings.newGame.numOfGladsInShop; i++)
+			{
+				CreateGladiator(Location.Shop);
+			}
+
+			dataController.SaveGameData();
+		} else {
+			shopGladiators = dataController.gameData.shopGladiators;
+
+			tournamentGladiators = dataController.gameData.tournamentGladiators;
+
+			playerGladiators = dataController.gameData.playerGladiators;
+		}	 
 	}
 }
